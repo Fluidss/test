@@ -20,6 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         header('Location:register.php');
         die();
     }
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['msg'] = 'Почта указана не корректно';
+        header('Location:register.php');
+        die();
+    }
     if (empty($pass)) {
         $_SESSION['msg'] = 'Заполните поле пароля';
         header('Location:register.php');
