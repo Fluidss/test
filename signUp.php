@@ -1,6 +1,5 @@
 <?
 session_start();
-require('functions.php');
 require('connect.php');
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location:register.php');
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         die();
     }
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['msg'] = 'Почта указана не корректно';
+        $_SESSION['msg'] = 'Некорректный почтовый адрес';
         header('Location:register.php');
         die();
     }
